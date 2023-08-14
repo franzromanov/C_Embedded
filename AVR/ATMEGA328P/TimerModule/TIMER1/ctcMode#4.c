@@ -3,14 +3,14 @@
 #define CLCK 16000000UL
 
 //func
-void _TIMER1_OC1B_WAVE_CTC(uint8_t prescaler,uint32_t fout){
+void _TIMER1_OC1B_WAVE_CTC(uint16_t prescaler,uint32_t fout){
  //start
  
  //GenerateCompare_Value
  uint32_t comp_val=((CLCK)/(2*prescaler*fout))-1;
  
  //load_compareValue
- OCR1A=compa_val;//TOP_valueISatOCR1A
+ OCR1A=comp_val;//TOP_valueISatOCR1A
 
  //set_Timer1_registers
  TCCR1A=(1<<COM1B0);
