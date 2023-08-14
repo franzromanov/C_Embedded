@@ -41,7 +41,6 @@ void _TIMER1_OC1B_WAVE_CTC(uint16_t prescaler,uint32_t fout){
 
 }
 
-
  //clear_flag
  while(TIFR1!=(1<<OCF1A));
  TIFR1|=(1<<OCF1A);
@@ -49,16 +48,13 @@ void _TIMER1_OC1B_WAVE_CTC(uint16_t prescaler,uint32_t fout){
  //end
 }
 
-
 //main
 int main(){
- //set_DataDirectionalRegister
+//set_DataDirectionalRegister
  DDRB=(1<<DDB5);
-
 
 //loop
  while(1)_TIMER1_OC1B_WAVE_CTC(1,62500);
-
 
 //esc
  return 0;
