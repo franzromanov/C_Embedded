@@ -65,7 +65,7 @@ void pwm_init(){
 
 	GPIOA_CRL&=~(0xF<<0);
 	GPIOA_CRL|=(0b1010<<0);
-
+//question: why its not required to config the AFIO CTRL registers?
 
 //TIM2_CONFIG
 	TIM2_CR1=0;
