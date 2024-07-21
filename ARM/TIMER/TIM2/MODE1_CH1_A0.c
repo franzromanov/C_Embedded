@@ -2,7 +2,7 @@
 /*
  * x is channel
  * NOTE
- * Timer Freq=CLCK/(prescaleer*(ARR+1))
+ * Timer Freq=CLCK/(prescaler*(ARR+1))
  * set bits on OC1PE will use the shdow register for CCR1
  * OCxREF:signal of output compare result of CCRx on channel x
  * CCxIF: is a capture/compare flag, its a flag that occurs when an compare value is triggering SREG (on pwm mode 1 its when CNT==CCRx)
