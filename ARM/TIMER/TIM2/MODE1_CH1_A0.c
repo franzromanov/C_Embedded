@@ -28,7 +28,7 @@ if using shadow register:
 before value loaded to the ARR its loaded to shadow register first
 then it transfered to ARR 
 if in your project doesnt require a signal change by changing the arr value then shadow register is not necessary
-if your project require the change in arr value to create such signal thus shadow register is a must to create smooth transistion:
+if your project require the change in arr value to create such signal with new frequency thus shadow register is a must to create smooth transistion:
 
 first frequency value>>shadow register>>ARR>>TIMER-PROCESS
 next frequency value>>shadow register>>waiting for TIMER finish it process(update event)>>(if its done/update event occurs)>>value from shadow register transfered to ARR>> Timer process with new frequency
