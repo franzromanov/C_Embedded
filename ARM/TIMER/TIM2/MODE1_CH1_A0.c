@@ -21,6 +21,20 @@
  *enable counter
 
  ----shadow register is a register to hold a copy of a value of the primary register
+shadow register act like a buffer
+
+if using shadow register:
+
+before value loaded to the ARR its loaded to shadow register first
+then it transfered to ARR 
+if in your project doesnt require a signal change by changing the arr value then shadow register is not necessary
+if your project require the change in arr value to create such signal thus shadow register is a must to create smooth transistion:
+
+first frequency value>>shadow register>>ARR>>TIMER-PROCESS
+next frequency value>>shadow register>>waiting for TIMER finish it process(update event)>>(if its done/update event occurs)>>value from shadow register transfered to ARR>> Timer process with new frequency
+
+this also applied on CCx if your project require the change of PWM duty cycle at some point, its up to your system models
+
  */
 
 #include <stdint.h>
@@ -55,11 +69,11 @@ void pwm_init(){
 
 //TIM2_CONFIG
 	TIM2_CR1=0;
-	TIM2_PSC = 7;//prescaler:using 8MHz clck
+	TIM2_PSC = 7;
 	TIM2_CCMR1|=(0x06<<4)|(1<<3);
 	TIM2_CCER|=(1<<0);//enable channel as an output of the signal on corresponding pin
-	TIM2_ARR=1000;//freq_set
-	TIM2_CCR1=250;//duty_cycle
+	TIM2_ARR=1000;
+	TIM2_CCR1=250;
 	TIM2_EGR|=(1<<0);
 	TIM2_CR1|=(1<<0);
 
